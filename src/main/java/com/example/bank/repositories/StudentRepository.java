@@ -1,6 +1,6 @@
-package com.example.springdatabasicdemo.repositories;
+package com.example.bank.repositories;
 
-import com.example.springdatabasicdemo.models.Student;
+import com.example.bank.models.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

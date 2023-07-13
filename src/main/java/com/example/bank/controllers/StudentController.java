@@ -1,8 +1,7 @@
-package com.example.springdatabasicdemo.controllers;
+package com.example.bank.controllers;
 
-import com.example.springdatabasicdemo.dtos.StudentDto;
-import com.example.springdatabasicdemo.models.Student;
-import com.example.springdatabasicdemo.services.StudentService;
+import com.example.bank.dtos.StudentDto;
+import com.example.bank.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.example.springdatabasicdemo.models;
+package com.example.bank.models;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;

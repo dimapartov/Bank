@@ -1,4 +1,4 @@
-package com.example.springdatabasicdemo.controllers;
+package com.example.bank.controllers;
 
 class StudentNotFoundException extends RuntimeException {
     StudentNotFoundException(Integer id) {

@@ -1,15 +1,18 @@
-package com.example.springdatabasicdemo.dtos;
+package com.example.bank.dtos;
 
-public class GroupDto {
+public class StudentDto {
+
     private int id;
     private String name;
+    private GroupDto group;
 
-    public GroupDto(int id, String name) {
+    public StudentDto(int id, String name, GroupDto group) {
         this.id = id;
         this.name = name;
+        this.group = group;
     }
 
-    public GroupDto() {
+    public StudentDto() {
     }
 
     public int getId() {
@@ -26,6 +29,14 @@ public class GroupDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public GroupDto getGroup() {
+        return group;
+    }
+
+    public void setGroup(GroupDto group) {
+        this.group = group;
     }
 
     @Override

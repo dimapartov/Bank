@@ -1,4 +1,4 @@
-package com.example.springdatabasicdemo.controllers;
+package com.example.bank.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

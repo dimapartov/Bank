@@ -1,12 +1,12 @@
-package com.example.springdatabasicdemo.services.impl;
+package com.example.bank.services.impl;
 
-import com.example.springdatabasicdemo.dtos.GroupDto;
-import com.example.springdatabasicdemo.dtos.StudentDto;
-import com.example.springdatabasicdemo.models.Group;
-import com.example.springdatabasicdemo.models.Student;
-import com.example.springdatabasicdemo.repositories.GroupRepository;
-import com.example.springdatabasicdemo.repositories.StudentRepository;
-import com.example.springdatabasicdemo.services.StudentService;
+import com.example.bank.dtos.GroupDto;
+import com.example.bank.dtos.StudentDto;
+import com.example.bank.models.Group;
+import com.example.bank.models.Student;
+import com.example.bank.repositories.GroupRepository;
+import com.example.bank.repositories.StudentRepository;
+import com.example.bank.services.StudentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
