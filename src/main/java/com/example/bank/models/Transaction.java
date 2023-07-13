@@ -1,15 +1,15 @@
 package com.example.bank.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "transactions")
-public class Transaction extends BaseEntity{
+public class Transaction extends BaseEntity {
     private BigDecimal transactionAmount;
     private Date date;
     private String transactionType;
@@ -24,21 +24,25 @@ public class Transaction extends BaseEntity{
         this.transactionType = transactionType;
     }
 
-    @Column(name = "transactionAmount", nullable = false)
+    @ManyToMany(mappedBy = "transactions")
+    private Set<Client> clients = new HashSet<>();
 
+    @Column(name = "transactionAmount", nullable = false)
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
     }
 
     @Column(name = "date", nullable = false)
-
     public Date getDate() {
         return date;
     }
 
     @Column(name = "transactionType", nullable = false)
-
     public String getTransactionType() {
         return transactionType;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
     }
 }

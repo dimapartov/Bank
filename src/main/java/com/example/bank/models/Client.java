@@ -3,6 +3,7 @@ package com.example.bank.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,9 +14,16 @@ public class Client extends BaseEntity {
     private String patronymic;
     private String phoneNuber;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Account> accounts;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(name = "client_transaction",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
+    private Set<Transaction> transactions = new HashSet<>();
+
 
     protected Client() {
     }
@@ -49,5 +57,14 @@ public class Client extends BaseEntity {
 
     public Set<Account> getAccounts() {
         return accounts;
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
+        transaction.getClients().add(this);
     }
 }

@@ -18,10 +18,6 @@ public class Account extends BaseEntity {
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable=false)
     private Client client;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Set<Card> cards;
-
     protected Account() {
     }
 
@@ -54,7 +50,4 @@ public class Account extends BaseEntity {
         this.balance = balance;
     }
 
-    public Set<Card> getCards() {
-        return cards;
-    }
 }
