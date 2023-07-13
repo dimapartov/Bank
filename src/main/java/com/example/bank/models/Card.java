@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "cards")
-public class Card extends BaseEntity{
+public class Card extends BaseEntity {
 
     private String cardType;
     private Long number;
@@ -32,18 +32,14 @@ public class Card extends BaseEntity{
     }
 
     @Column(name = "number", nullable = false)
-
     public Long getNumber() {
         return number;
     }
 
     @Column(name = "validThru", nullable = false)
-
     public Date getValidThru() {
         return validThru;
     }
-
-    @Column(name = "account", nullable = false)
 
     public Account getAccount() {
         return account;
