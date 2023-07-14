@@ -19,9 +19,6 @@ public class Client extends BaseEntity {
     private Set<Account> accounts;
 
     @OneToMany(mappedBy = "client", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-//    @JoinTable(name = "client_transaction",
-//            joinColumns = @JoinColumn(name = "client_id"),
-//            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
     private Set<ClientTransaction> clientTransactions = new HashSet<>();
 
 
@@ -32,7 +29,7 @@ public class Client extends BaseEntity {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
-        this.phoneNuber = phoneNuber;
+        this.phoneNumber = phoneNuber;
     }
 
     @Column(name = "surname", nullable = false)
@@ -51,7 +48,7 @@ public class Client extends BaseEntity {
     }
 
     @Column(name = "phone_number", nullable = false)
-    public String getPhoneNumber() {
+    public String getPhoneNuber() {
         return phoneNumber;
     }
 
@@ -59,4 +56,20 @@ public class Client extends BaseEntity {
         return accounts;
     }
 
+    public Set<ClientTransaction> getClientTransactions() {
+        return clientTransactions;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", accounts=" + accounts +
+                ", clientTransactions=" + clientTransactions +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 }

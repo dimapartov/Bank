@@ -50,4 +50,14 @@ public class Account extends BaseEntity {
         this.balance = balance;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountNumber=" + accountNumber +
+                ", balance=" + balance +
+                ", accountOpenDate=" + accountOpenDate +
+                ", client=" + client +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 }
