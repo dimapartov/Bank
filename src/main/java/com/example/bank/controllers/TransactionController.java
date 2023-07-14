@@ -1,6 +1,7 @@
 package com.example.bank.controllers;
 
 import com.example.bank.dtos.TransactionDto;
+import com.example.bank.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class TransactionController {
 
     @GetMapping("/transactions")
     Iterable<TransactionDto> all(){
-        transactionService.getAll();
+        return transactionService.getAll();
     }
 
     @PostMapping("/add-transaction")
