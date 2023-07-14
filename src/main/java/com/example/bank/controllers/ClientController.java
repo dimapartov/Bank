@@ -10,6 +10,10 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @GetMapping("/clients")
+    Iterable<ClientDto> all(){
+        return clientService.getAll();
+    }
     @PostMapping("/add-client")
     ClientDto newClient(@RequestBody ClientDto newClient){
         return clientService.addClient(newClient);
