@@ -14,8 +14,8 @@ public class Transaction extends BaseEntity {
     private Date date;
     private String transactionType;
 
-    @OneToMany(mappedBy = "transactions")
-    private Set<ClientTransaction> clients = new HashSet<>();
+    @OneToMany(mappedBy = "transaction")
+    private Set<ClientTransaction> clientsTransactions = new HashSet<>();
 
 
     protected Transaction() {

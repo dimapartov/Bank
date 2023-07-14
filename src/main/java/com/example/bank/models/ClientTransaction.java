@@ -8,33 +8,30 @@ import java.util.Set;
 @Table(name = "client_transaction")
 public class ClientTransaction {
 
-//    @EmbeddedId
-//    private ClientTransactionPK pk;
 
     @Id
     @ManyToOne
-    private Client clients;
+    private Client client;
 
     @Id
     @ManyToOne
-    private Transaction transactions;
+    private Transaction transaction;
 
     protected ClientTransaction() {
     }
 
-    public ClientTransaction(ClientTransactionPK pk, Client clients, Transaction transactions) {
-//        this.pk = pk;
-        this.clients = clients;
-        this.transactions = transactions;
+    public ClientTransaction(Client clients, Transaction transactions) {
+        this.client = clients;
+        this.transaction = transactions;
     }
 
     @Column(name = "client_id", nullable = false)
-    public Client getClients() {
-        return clients;
+    public Client getClient() {
+        return client;
     }
 
     @Column(name = "transaction_id", nullable = false)
-    public Transaction getTransactions() {
-        return transactions;
+    public Transaction getTransaction() {
+        return transaction;
     }
 }
