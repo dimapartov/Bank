@@ -8,7 +8,6 @@ import java.util.Set;
 @Table(name = "client_transaction")
 public class ClientTransaction {
 
-
     @Id
     @ManyToOne
     private Client client;
@@ -26,12 +25,12 @@ public class ClientTransaction {
     }
 
     @Column(name = "client_id", nullable = false)
-    public Client getClient() {
+    public Client getClients() {
         return client;
     }
 
     @Column(name = "transaction_id", nullable = false)
-    public Transaction getTransaction() {
+    public Transaction getTransactions() {
         return transaction;
     }
 }

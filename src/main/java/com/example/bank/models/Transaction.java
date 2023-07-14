@@ -15,7 +15,7 @@ public class Transaction extends BaseEntity {
     private String transactionType;
 
     @OneToMany(mappedBy = "transaction")
-    private Set<ClientTransaction> clientsTransactions = new HashSet<>();
+    private Set<ClientTransaction> clientTransactions = new HashSet<>();
 
 
     protected Transaction() {
@@ -42,7 +42,18 @@ public class Transaction extends BaseEntity {
         return transactionType;
     }
 
-//    public Set<Client> getClients() {
-//        return clients;
-//    }
+    public Set<ClientTransaction> getClients() {
+        return clientTransactions;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionAmount=" + transactionAmount +
+                ", date=" + date +
+                ", transactionType='" + transactionType + '\'' +
+                ", clientTransactions=" + clientTransactions +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 }
