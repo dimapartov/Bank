@@ -12,13 +12,13 @@ public class Client extends BaseEntity {
     private String surname;
     private String name;
     private String patronymic;
-    private String phoneNuber;
+    private String phoneNumber;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Account> accounts;
 
-    @OneToMany(mappedBy = "clients", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToMany(mappedBy = "client", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 //    @JoinTable(name = "client_transaction",
 //            joinColumns = @JoinColumn(name = "client_id"),
 //            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
@@ -51,20 +51,12 @@ public class Client extends BaseEntity {
     }
 
     @Column(name = "phone_number", nullable = false)
-    public String getPhoneNuber() {
-        return phoneNuber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public Set<Account> getAccounts() {
         return accounts;
     }
 
-//    public Set<Transaction> getTransactions() {
-//        return transactions;
-//    }
-//
-//    public void addTransaction(Transaction transaction) {
-//        this.transactions.add(transaction);
-//        transaction.getClients().add(this);
-//    }
 }
