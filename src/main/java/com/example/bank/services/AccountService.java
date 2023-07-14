@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AccountService {
 
-    AccountDto createAccount(AccountDto account);
+    AccountDto createAccount(AccountDto account, Integer id);
 
     void terminateAccountByNumber(Integer accountNumber);
 
