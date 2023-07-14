@@ -14,6 +14,9 @@ public class Transaction extends BaseEntity {
     private Date date;
     private String transactionType;
 
+    @OneToMany(mappedBy = "transactions")
+    private Set<ClientTransaction> clients = new HashSet<>();
+
 
     protected Transaction() {
     }
@@ -23,9 +26,6 @@ public class Transaction extends BaseEntity {
         this.date = date;
         this.transactionType = transactionType;
     }
-
-    @ManyToMany(mappedBy = "transactions")
-    private Set<Client> clients = new HashSet<>();
 
     @Column(name = "transactionAmount", nullable = false)
     public BigDecimal getTransactionAmount() {
@@ -42,7 +42,7 @@ public class Transaction extends BaseEntity {
         return transactionType;
     }
 
-    public Set<Client> getClients() {
-        return clients;
-    }
+//    public Set<Client> getClients() {
+//        return clients;
+//    }
 }

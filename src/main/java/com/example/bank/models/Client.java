@@ -18,11 +18,11 @@ public class Client extends BaseEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Account> accounts;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    @JoinTable(name = "client_transaction",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
-    private Set<Transaction> transactions = new HashSet<>();
+    @OneToMany(mappedBy = "clients", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+//    @JoinTable(name = "client_transaction",
+//            joinColumns = @JoinColumn(name = "client_id"),
+//            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
+    private Set<ClientTransaction> clientTransactions = new HashSet<>();
 
 
     protected Client() {
@@ -59,12 +59,12 @@ public class Client extends BaseEntity {
         return accounts;
     }
 
-    public Set<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void addTransaction(Transaction transaction) {
-        this.transactions.add(transaction);
-        transaction.getClients().add(this);
-    }
+//    public Set<Transaction> getTransactions() {
+//        return transactions;
+//    }
+//
+//    public void addTransaction(Transaction transaction) {
+//        this.transactions.add(transaction);
+//        transaction.getClients().add(this);
+//    }
 }
