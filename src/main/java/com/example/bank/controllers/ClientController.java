@@ -14,7 +14,7 @@ public class ClientController {
     Iterable<ClientDto> all(){
         return clientService.getAll();
     }
-    @PostMapping("/add-client")
+    @PostMapping("/client/add")
     ClientDto newClient(@RequestBody ClientDto newClient){
         return clientService.addClient(newClient);
     }
@@ -23,12 +23,12 @@ public class ClientController {
         return clientService.findClientById(id);
     }
 
-    @DeleteMapping("/client-delete/{id}")
+    @DeleteMapping("/client/delete/{id}")
     void delete(@PathVariable Integer id){
         clientService.removeClientById(id);
     }
 
-    @PutMapping("/client--phonenumber-update/{id}")
+    @PutMapping("/client/phonenumber-update/{id}")
     ClientDto updatePhoneNumber( @RequestBody String phoneNumber, @PathVariable Integer id){
         return clientService.updatePhoneNumberById(id, phoneNumber);
     }
