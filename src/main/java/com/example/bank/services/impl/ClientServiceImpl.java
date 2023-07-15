@@ -1,8 +1,10 @@
 package com.example.bank.services.impl;
 
 import com.example.bank.dtos.ClientDto;
+import com.example.bank.models.Client;
 import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.ClientService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +14,19 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
 
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public ClientDto addClient(ClientDto client) {
-        return null;
+        Client client1 = modelMapper.map(client, Client.class);
+        return modelMapper.map(clientRepository.save(client1), ClientDto.class);
     }
 
     @Override
     public void removeClientById(Integer id) {
-        clientRepository.deleteClientById(id);
+        clientRepository.deleteById(id);
     }
 
     @Override

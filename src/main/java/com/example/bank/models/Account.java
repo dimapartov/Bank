@@ -5,7 +5,6 @@ import org.hibernate.annotations.Cascade;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "accounts")
@@ -15,7 +14,7 @@ public class Account extends BaseEntity {
     private Date accountOpenDate;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable=false)
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
     private Client client;
 
     protected Account() {
@@ -56,8 +55,11 @@ public class Account extends BaseEntity {
                 "accountNumber=" + accountNumber +
                 ", balance=" + balance +
                 ", accountOpenDate=" + accountOpenDate +
-                ", client=" + client +
                 ", id=" + id +
                 "} " + super.toString();
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

@@ -1,28 +1,46 @@
 package com.example.bank.dtos;
 
+import java.util.List;
 import java.util.Set;
 
 public class ClientDto {
 
+    private Integer id;
     private String surname;
     private String name;
     private String patronymic;
     private String phoneNumber;
-    private Set<AccountDto> accounts;
-    private Set<ClientTransactionDto> clientTransactions;
+
+//    private List<ClientTransactionDto> clientTransactions;
 
     public ClientDto() {
     }
 
-    public ClientDto(String surname, String name, String patronymic, String phoneNumber, Set<AccountDto> accounts,
-                     Set<ClientTransactionDto> clientTransactions) {
+//    public ClientDto(String surname, String name, String patronymic, String phoneNumber,
+//                     List<AccountDto> accounts, List<ClientTransactionDto> clientTransactions) {
+//        this.surname = surname;
+//        this.name = name;
+//        this.patronymic = patronymic;
+//        this.phoneNumber = phoneNumber;
+//        this.accounts = accounts;
+//        this.clientTransactions = clientTransactions;
+//    }
+//    public ClientDto(String surname, String name, String patronymic, String phoneNumber,
+//                     List<AccountDto> accounts) {
+//        this.surname = surname;
+//        this.name = name;
+//        this.patronymic = patronymic;
+//        this.phoneNumber = phoneNumber;
+////        this.accounts = accounts;
+//    }
+
+    public ClientDto(String surname, String name, String patronymic, String phoneNumber) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.phoneNumber = phoneNumber;
-        this.accounts = accounts;
-        this.clientTransactions = clientTransactions;
     }
+
 
     public String getSurname() {
         return surname;
@@ -56,20 +74,22 @@ public class ClientDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<AccountDto> getAccounts() {
-        return accounts;
-    }
 
-    public void setAccounts(Set<AccountDto> accounts) {
-        this.accounts = accounts;
-    }
+//
+//    public void setAccounts(List<AccountDto> accounts) {
+//        this.accounts = accounts;
+//    }
 
-    public Set<ClientTransactionDto> getClientTransactions() {
-        return clientTransactions;
-    }
+//    public List<ClientTransactionDto> getClientTransactions() {
+//        return clientTransactions;
+//    }
+//
+//    public void setClientTransactions(List<ClientTransactionDto> clientTransactions) {
+//        this.clientTransactions = clientTransactions;
+//    }
 
-    public void setClientTransactions(Set<ClientTransactionDto> clientTransactions) {
-        this.clientTransactions = clientTransactions;
+    public Integer getId() {
+        return id;
     }
 
     @Override
@@ -79,8 +99,7 @@ public class ClientDto {
                 ", name='" + name + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", accounts=" + accounts +
-                ", clientTransactions=" + clientTransactions +
-                '}';
+                ", id=" + id +
+                "} ";
     }
 }

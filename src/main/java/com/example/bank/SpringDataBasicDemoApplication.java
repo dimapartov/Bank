@@ -8,16 +8,16 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringDataBasicDemoApplication {
-//    @Bean
-//    public ModelMapper modelMapper(){
-//        ModelMapper modelMapper = new ModelMapper();
-//
-//        modelMapper.getConfiguration()
-//                .setFieldMatchingEnabled(true)
-//                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
-//
-//        return modelMapper;
-//    }
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+
+        modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+
+        return modelMapper;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataBasicDemoApplication.class, args);

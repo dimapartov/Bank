@@ -1,15 +1,24 @@
 package com.example.bank.dtos;
 
-import com.example.bank.models.Client;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class AccountDto {
+
+    private Integer id;
     private Integer accountNumber;
     private BigDecimal balance;
     private Date accountOpenDate;
     private ClientDto client;
+
+    public AccountDto(Integer accountNumber, BigDecimal balance, Date accountOpenDate) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.accountOpenDate = accountOpenDate;
+    }
+
+    public AccountDto() {
+    }
 
     public AccountDto(Integer accountNumber, BigDecimal balance, Date accountOpenDate, ClientDto client) {
         this.accountNumber = accountNumber;
@@ -18,7 +27,12 @@ public class AccountDto {
         this.client = client;
     }
 
-    public AccountDto() {
+    public AccountDto(Integer id, Integer accountNumber, BigDecimal balance, Date accountOpenDate, ClientDto client) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.accountOpenDate = accountOpenDate;
+        this.client = client;
     }
 
     public Integer getAccountNumber() {
@@ -53,10 +67,15 @@ public class AccountDto {
         this.client = client;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "AccountDto{" +
-                "accountNumber=" + accountNumber +
+                "id=" + id +
+                ", accountNumber=" + accountNumber +
                 ", balance=" + balance +
                 ", accountOpenDate=" + accountOpenDate +
                 ", client=" + client +
