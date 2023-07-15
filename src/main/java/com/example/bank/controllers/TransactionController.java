@@ -19,13 +19,13 @@ public class TransactionController {
         return transactionService.getAll();
     }
 
-    @PostMapping("/add-transaction")
+    @PostMapping("/transaction/add")
     TransactionDto newTransaction(@RequestBody TransactionDto newTransaction,
                                   @RequestParam Integer sender_id, @RequestParam Integer receiver_id){
         return transactionService.createTransaction(sender_id, receiver_id, newTransaction);
     }
 
-    @GetMapping("/transactions-by-date")
+    @GetMapping("/transactions/by-date")
     List<TransactionDto> getByDate(@RequestParam Date date){
         return transactionService.findAllTransactionsOnDate(date);
     }

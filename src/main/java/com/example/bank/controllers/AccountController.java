@@ -21,22 +21,22 @@ public class AccountController {
         return accountService.getAll();
     }
 
-    @PostMapping("/new-client-account/{id}")
+    @PostMapping("/account/new-account/{id}")
     AccountDto newAccount(@RequestBody AccountDto newAccount, @PathVariable Integer id){
        return accountService.createAccount(newAccount, id);
     }
 
-    @PutMapping("/deposit-money")
+    @PutMapping("/account/deposit-money")
     void depositMoneyToAccount(@RequestBody DepositMoneyDto depMoney){
         accountService.depositMoneyToAccountById(depMoney.getId(), depMoney.getMoney());
     }
 
-    @DeleteMapping("/delete-account")
+    @DeleteMapping("/account/delete")
     void deleteAccount(@RequestParam Integer number){
         accountService.terminateAccountByNumber(number);
     }
 
-    @GetMapping("/check-money")
+    @GetMapping("/account/check-money")
     BigDecimal checkBalanceByAccountNumber(@RequestParam Integer number){
         return accountService.checkBalanceOnAccountByNumber(number);
     }
