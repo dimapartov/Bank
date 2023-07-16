@@ -10,11 +10,12 @@ import java.util.List;
 public interface AccountService<ID> {
 
     AccountDto createAccount(AccountDto account, Integer id);
-    AccountDto createAccount(AccountDto account);
+//    AccountDto createAccount(AccountDto account);
 
-//    void terminateAccountByNumber(Integer accountNumber);
+    void removeAccountByNumber(Integer accountNumber);
+    void removeAccountById(ID id);
 
-    void depositMoneyToAccountByNumber(Integer accountNumber, BigDecimal amountOfMoney);
+    AccountDto depositMoneyToAccountByNumber(Integer accountNumber, BigDecimal amountOfMoney);
 
     Date checkAccountOpenDateByNumber(Integer accountNumber);
 
@@ -23,7 +24,5 @@ public interface AccountService<ID> {
     List<AccountDto> findAccountsByClientId(Integer id);
 
     List<AccountDto> getAll();
-
-    void removeAccountById(ID id);
 
 }

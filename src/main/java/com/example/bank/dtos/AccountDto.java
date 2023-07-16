@@ -1,6 +1,7 @@
 package com.example.bank.dtos;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 public class AccountDto {
@@ -11,28 +12,19 @@ public class AccountDto {
     private Date accountOpenDate;
     private ClientDto client;
 
-    public AccountDto(Integer accountNumber, BigDecimal balance, Date accountOpenDate) {
+//    public AccountDto(Integer accountNumber, Integer balance, String accountOpenDate) {
+//        this.accountNumber = accountNumber;
+//        this.balance = new BigDecimal(balance);
+//        this.accountOpenDate = Date.from(Instant.parse(accountOpenDate));
+//    }
+    public AccountDto(Integer accountNumber, Integer balance) {
         this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.accountOpenDate = accountOpenDate;
+        this.balance = new BigDecimal(balance);
+        Date currentDate = new Date();
+        this.accountOpenDate = new Date(currentDate.getTime());
     }
 
     public AccountDto() {
-    }
-
-    public AccountDto(Integer accountNumber, BigDecimal balance, Date accountOpenDate, ClientDto client) {
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.accountOpenDate = accountOpenDate;
-        this.client = client;
-    }
-
-    public AccountDto(Integer id, Integer accountNumber, BigDecimal balance, Date accountOpenDate, ClientDto client) {
-        this.id = id;
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.accountOpenDate = accountOpenDate;
-        this.client = client;
     }
 
     public Integer getAccountNumber() {

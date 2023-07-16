@@ -38,23 +38,26 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         ClientDto client = new ClientDto("Petrov", "Dima", "Denisovich", "8800");
         client = clientService.addClient(client);
 
-//        AccountDto account = new AccountDto(5555, new BigDecimal(10), new Date(1689427769), client);
-//        AccountDto account2 = new AccountDto(6666, new BigDecimal(10), new Date(1689427769),client);
-//        AccountDto account3 = new AccountDto(7777, new BigDecimal(10), new Date(1689427769),client);
-        AccountDto account = new AccountDto(5555, new BigDecimal(10), new Date(1689427769));
-        AccountDto account2 = new AccountDto(6666, new BigDecimal(10), new Date(1689427769));
-        AccountDto account3 = new AccountDto(7777, new BigDecimal(10), new Date(1689427769));
+        AccountDto account = new AccountDto(5555, 100);
+        AccountDto account2 = new AccountDto(6666, 100);
+        AccountDto account3 = new AccountDto(7777, 100);
 
         System.out.println(clientRepository.findClientById(1));
+
         System.out.println(accountService.createAccount(account, client.getId()));
         System.out.println(accountService.createAccount(account2, client.getId()));
         System.out.println(accountService.createAccount(account3, client.getId()));
-//        System.out.println(accountService.createAccount(account));
-//        System.out.println(accountService.createAccount(account2));
-//        System.out.println(accountService.createAccount(account3));
 
         accountService.removeAccountById(3);
-//        accountService.removeAccountById(3);
+        accountService.removeAccountByNumber(6666);
+
+        System.out.println(accountService.depositMoneyToAccountByNumber(5555, new BigDecimal(100)));
+
+        System.out.println(accountService.checkAccountOpenDateByNumber(5555));
+        System.out.println(accountService.checkBalanceOnAccountByNumber(5555));
+        System.out.println(accountService.findAccountsByClientId(1));
+
+
 
     }
 }
