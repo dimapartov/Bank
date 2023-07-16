@@ -70,7 +70,6 @@ public class AccountDto {
                 ", accountNumber=" + accountNumber +
                 ", balance=" + balance +
                 ", accountOpenDate=" + accountOpenDate +
-                ", client=" + client +
                 '}';
     }
 }

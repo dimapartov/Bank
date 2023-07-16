@@ -16,4 +16,6 @@ public interface ClientService {
 
     List<ClientDto> getAll();
 
+    List<ClientDto> getRelatedInTransactionClientsByClientId(Integer id);
+
 }

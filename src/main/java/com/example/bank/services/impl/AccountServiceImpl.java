@@ -1,5 +1,6 @@
 package com.example.bank.services.impl;
 
+import com.example.bank.dtos.AccountClientInfoDto;
 import com.example.bank.dtos.AccountDto;
 import com.example.bank.dtos.ClientDto;
 import com.example.bank.models.Account;
@@ -7,14 +8,18 @@ import com.example.bank.models.Client;
 import com.example.bank.repositories.AccountRepository;
 import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.AccountService;
+import jakarta.persistence.Tuple;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AccountServiceImpl implements AccountService<Integer> {
@@ -77,5 +82,11 @@ public class AccountServiceImpl implements AccountService<Integer> {
     public List<AccountDto> getAll() {
         List<Account> allAccounts1 = accountRepository.findAll();
         return modelMapper.map(allAccounts1, List.class);
+    }
+
+    @Override
+    public List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(Integer id) {
+        List<AccountClientInfoDto> list = accountRepository.getAccountInfoByClientInTransactionById(id);
+        return list;
     }
 }

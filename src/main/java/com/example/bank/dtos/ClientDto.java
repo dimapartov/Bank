@@ -11,30 +11,18 @@ public class ClientDto {
     private String patronymic;
     private String phoneNumber;
 
-//    private List<ClientTransactionDto> clientTransactions;
-
     public ClientDto() {
     }
 
-//    public ClientDto(String surname, String name, String patronymic, String phoneNumber,
-//                     List<AccountDto> accounts, List<ClientTransactionDto> clientTransactions) {
-//        this.surname = surname;
-//        this.name = name;
-//        this.patronymic = patronymic;
-//        this.phoneNumber = phoneNumber;
-//        this.accounts = accounts;
-//        this.clientTransactions = clientTransactions;
-//    }
-//    public ClientDto(String surname, String name, String patronymic, String phoneNumber,
-//                     List<AccountDto> accounts) {
-//        this.surname = surname;
-//        this.name = name;
-//        this.patronymic = patronymic;
-//        this.phoneNumber = phoneNumber;
-////        this.accounts = accounts;
-//    }
-
     public ClientDto(String surname, String name, String patronymic, String phoneNumber) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public ClientDto(Integer id, String surname, String name, String patronymic, String phoneNumber) {
+        this.id = id;
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -73,20 +61,6 @@ public class ClientDto {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
-//
-//    public void setAccounts(List<AccountDto> accounts) {
-//        this.accounts = accounts;
-//    }
-
-//    public List<ClientTransactionDto> getClientTransactions() {
-//        return clientTransactions;
-//    }
-//
-//    public void setClientTransactions(List<ClientTransactionDto> clientTransactions) {
-//        this.clientTransactions = clientTransactions;
-//    }
 
     public Integer getId() {
         return id;

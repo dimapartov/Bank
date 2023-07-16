@@ -2,9 +2,6 @@ package com.example.bank.dtos;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class TransactionDto {
 
@@ -12,18 +9,15 @@ public class TransactionDto {
     private BigDecimal transactionAmount;
     private Date date;
     private String transactionType;
-    private List<ClientTransactionDto> clientsTransactions;
 
     public TransactionDto() {
     }
 
-    public TransactionDto(Integer id, BigDecimal transactionAmount, Date date, String transactionType,
-                          List<ClientTransactionDto> clientsTransactions) {
-        this.id = id;
+    public TransactionDto(BigDecimal transactionAmount, String transactionType) {
         this.transactionAmount = transactionAmount;
-        this.date = date;
+        Date currentDate = new Date();
+        this.date = new Date(currentDate.getTime());
         this.transactionType = transactionType;
-        this.clientsTransactions = clientsTransactions;
     }
 
     public TransactionDto(Integer id, BigDecimal transactionAmount, Date date, String transactionType) {
@@ -55,14 +49,6 @@ public class TransactionDto {
 
     public void setTransactionType(String transactionType) {
         this.transactionType = transactionType;
-    }
-
-    public List<ClientTransactionDto> getClientsTransactions() {
-        return clientsTransactions;
-    }
-
-    public void setClientsTransactions(List<ClientTransactionDto> clientsTransactions) {
-        this.clientsTransactions = clientsTransactions;
     }
 
     @Override

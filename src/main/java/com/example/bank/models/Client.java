@@ -17,9 +17,9 @@ public class Client extends BaseEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Account> accounts;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
-//    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-//    private List<ClientTransaction> clientTransactions;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<ClientTransaction> clientTransactions;
 
 
     protected Client() {
@@ -56,9 +56,9 @@ public class Client extends BaseEntity {
         return accounts;
     }
 
-//    public List<ClientTransaction> getClientTransactions() {
-//        return clientTransactions;
-//    }
+    public List<ClientTransaction> getClientTransactions() {
+        return clientTransactions;
+    }
 
     @Override
     public String toString() {

@@ -47,4 +47,9 @@ public class ClientServiceImpl implements ClientService {
     public List<ClientDto> getAll() {
         return modelMapper.map(clientRepository.findAll(), List.class);
     }
+
+    @Override
+    public List<ClientDto> getRelatedInTransactionClientsByClientId(Integer id) {
+        return modelMapper.map(clientRepository.getRelatedInTransactionClientsByClientId(id), List.class);
+    }
 }

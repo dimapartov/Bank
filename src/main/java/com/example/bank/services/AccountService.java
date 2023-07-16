@@ -1,5 +1,6 @@
 package com.example.bank.services;
 
+import com.example.bank.dtos.AccountClientInfoDto;
 import com.example.bank.dtos.AccountDto;
 import jakarta.transaction.Transactional;
 
@@ -24,5 +25,7 @@ public interface AccountService<ID> {
     List<AccountDto> findAccountsByClientId(Integer id);
 
     List<AccountDto> getAll();
+
+    List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(Integer id);
 
 }
