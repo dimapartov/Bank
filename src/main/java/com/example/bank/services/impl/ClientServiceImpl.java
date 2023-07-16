@@ -15,6 +15,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -31,16 +32,19 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDto findClientById(Integer id) {
-        return null;
+        return modelMapper.map(clientRepository.findClientById(id), ClientDto.class);
     }
 
     @Override
     public ClientDto updatePhoneNumberById(Integer id, String phoneNumber) {
-        return null;
+        Client client = clientRepository.findClientById(id);
+        client.setPhoneNumber(phoneNumber);
+        clientRepository.save(client);
+        return modelMapper.map(client, ClientDto.class);
     }
 
     @Override
     public List<ClientDto> getAll() {
-        return null;
+        return modelMapper.map(clientRepository.findAll(), List.class);
     }
 }

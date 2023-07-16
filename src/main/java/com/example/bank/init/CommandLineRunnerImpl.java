@@ -36,26 +36,32 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private void seedData() throws IOException {
 
         ClientDto client = new ClientDto("Petrov", "Dima", "Denisovich", "8800");
-        client = clientService.addClient(client);
+        clientService.addClient(client);
+        ClientDto client2 = new ClientDto("Antonov", "Dima", "Evgenievich", "88090909");
+        clientService.addClient(client2);
 
-        AccountDto account = new AccountDto(5555, 100);
-        AccountDto account2 = new AccountDto(6666, 100);
-        AccountDto account3 = new AccountDto(7777, 100);
+//        System.out.println(clientService.findClientById(2));
+        System.out.println(clientService.getAll());
+        System.out.println(clientService.updatePhoneNumberById(2, "892929292929"));
+//        AccountDto account = new AccountDto(5555, 100);
+//        AccountDto account2 = new AccountDto(6666, 100);
+//        AccountDto account3 = new AccountDto(7777, 100);
+//
+//        System.out.println(clientRepository.findClientById(1));
+//
+//        System.out.println(accountService.createAccount(account, client.getId()));
+//        System.out.println(accountService.createAccount(account2, client.getId()));
+//        System.out.println(accountService.createAccount(account3, client.getId()));
+//
+//        accountService.removeAccountById(3);
+//        accountService.removeAccountByNumber(6666);
+//
+//        System.out.println(accountService.depositMoneyToAccountByNumber(5555, new BigDecimal(100)));
+//
+//        System.out.println(accountService.checkAccountOpenDateByNumber(5555));
+//        System.out.println(accountService.checkBalanceOnAccountByNumber(5555));
+//        System.out.println(accountService.findAccountsByClientId(1));
 
-        System.out.println(clientRepository.findClientById(1));
-
-        System.out.println(accountService.createAccount(account, client.getId()));
-        System.out.println(accountService.createAccount(account2, client.getId()));
-        System.out.println(accountService.createAccount(account3, client.getId()));
-
-        accountService.removeAccountById(3);
-        accountService.removeAccountByNumber(6666);
-
-        System.out.println(accountService.depositMoneyToAccountByNumber(5555, new BigDecimal(100)));
-
-        System.out.println(accountService.checkAccountOpenDateByNumber(5555));
-        System.out.println(accountService.checkBalanceOnAccountByNumber(5555));
-        System.out.println(accountService.findAccountsByClientId(1));
 
 
 

@@ -70,4 +70,8 @@ public class Client extends BaseEntity {
                 ", id=" + id +
                 "} " + super.toString();
     }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
