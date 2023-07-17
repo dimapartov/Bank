@@ -1,7 +1,5 @@
 package com.example.bank.dtos;
 
-import jakarta.persistence.Tuple;
-
 import java.math.BigDecimal;
 
 public class AccountClientInfoDto {
