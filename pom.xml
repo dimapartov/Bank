@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>Bank</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringDataBasicDemo</name>
-    <description>SpringDataBasicDemo</description>
+    <name>Bank</name>
+    <description>Bank</description>
     <properties>
         <java.version>17</java.version>
     </properties>
