@@ -43,7 +43,7 @@ public class AccountController {
     }
 
     @GetMapping("/accounts/{id}")
-    Iterable<AccountDto> allClientAccounts(@PathVariable Integer id){
+    Iterable<AccountDto> allClientAccounts(@PathVariable Integer id) {
         return accountService.findAccountsByClientId(id);
     }
 

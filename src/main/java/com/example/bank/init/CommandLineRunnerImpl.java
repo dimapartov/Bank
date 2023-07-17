@@ -3,8 +3,6 @@ package com.example.bank.init;
 import com.example.bank.dtos.AccountDto;
 import com.example.bank.dtos.ClientDto;
 import com.example.bank.dtos.TransactionDto;
-import com.example.bank.repositories.AccountRepository;
-import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.AccountService;
 import com.example.bank.services.ClientService;
 import com.example.bank.services.TransactionService;
@@ -17,10 +15,6 @@ import java.math.BigDecimal;
 
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
-    @Autowired
-    private AccountRepository accountRepository;
-    @Autowired
-    private ClientRepository clientRepository;
 
     @Autowired
     private AccountService accountService;
@@ -71,19 +65,6 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         System.out.println(accountService.createAccount(account3, client3.getId()));
 
         System.out.println(clientService.getRelatedInTransactionClientsByClientId(1));
-
-
-//        accountService.removeAccountById(3);
-//        accountService.removeAccountByNumber(6666);
-
-//        System.out.println(accountService.depositMoneyToAccountByNumber(5555, new BigDecimal(100)));
-
-//        System.out.println(accountService.checkAccountOpenDateByNumber(5555));
-//        System.out.println(accountService.checkBalanceOnAccountByNumber(5555));
-//        System.out.println(accountService.findAccountsByClientId(1));
-
-
-
 
     }
 }
