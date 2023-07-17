@@ -1,8 +1,5 @@
 package com.example.bank.dtos;
 
-import java.util.List;
-import java.util.Set;
-
 public class ClientDto {
 
     private Integer id;

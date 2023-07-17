@@ -5,7 +5,6 @@ import com.example.bank.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,5 +27,10 @@ public class TransactionController {
     @GetMapping("/transactions/{client_id}")
     List<TransactionDto> getByClientId(@PathVariable Integer client_id){
         return transactionService.getAllTransactionsByClientId(client_id);
+    }
+
+    @GetMapping("/transaction/{id}")
+    TransactionDto getById(@PathVariable Integer id) {
+        return transactionService.getTransactionById(id);
     }
 }

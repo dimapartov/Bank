@@ -1,5 +1,6 @@
 package com.example.bank.controllers;
 
+import com.example.bank.dtos.AccountClientInfoDto;
 import com.example.bank.dtos.AccountDto;
 import com.example.bank.dtos.DepositMoneyDto;
 import com.example.bank.services.AccountService;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @RestController
 public class AccountController {
@@ -27,13 +27,14 @@ public class AccountController {
     }
 
     @PutMapping("/account/deposit-money")
-    void depositMoneyToAccount(@RequestBody DepositMoneyDto depMoney){
-        accountService.depositMoneyToAccountByNumber(depMoney.getNumber(), depMoney.getMoney());
+    AccountDto depositMoneyToAccount(@RequestBody DepositMoneyDto depMoney){
+        return accountService.depositMoneyToAccountByNumber(depMoney.getNumber(), depMoney.getMoney());
     }
 
     @DeleteMapping("/account/delete")
-    void deleteAccount(@RequestParam Integer number){
+    String deleteAccount(@RequestParam Integer number){
         accountService.removeAccountByNumber(number);
+        return "Account successfully delete";
     }
 
     @GetMapping("/account/check-money")
@@ -49,5 +50,10 @@ public class AccountController {
     @GetMapping("/account/date")
     Date getAccountDate(@RequestParam Integer number){
         return accountService.checkAccountOpenDateByNumber(number);
+    }
+
+    @GetMapping("/accounts/client-info-in-transaction/{id}")
+    Iterable<AccountClientInfoDto> getAccountInfoByClientTransactionById(@PathVariable Integer id) {
+        return accountService.getAccountInfoByClientInTransactionById(id);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClientController {
+
     @Autowired
     private ClientService clientService;
 
@@ -14,22 +15,30 @@ public class ClientController {
     Iterable<ClientDto> all(){
         return clientService.getAll();
     }
+
     @PostMapping("/client/add")
     ClientDto newClient(@RequestBody ClientDto newClient){
         return clientService.addClient(newClient);
     }
+
     @GetMapping("/clients/{id}")
     ClientDto one(@PathVariable Integer id){
         return clientService.findClientById(id);
     }
 
     @DeleteMapping("/client/delete/{id}")
-    void delete(@PathVariable Integer id){
+    String delete(@PathVariable Integer id){
         clientService.removeClientById(id);
+        return "Client succesfully removed";
     }
 
     @PutMapping("/client/phonenumber-update/{id}")
     ClientDto updatePhoneNumber( @RequestBody String phoneNumber, @PathVariable Integer id){
         return clientService.updatePhoneNumberById(id, phoneNumber);
+    }
+
+    @GetMapping("/client/get-related-clients/{id}")
+    Iterable<ClientDto> getRelatedClients(@PathVariable Integer id) {
+        return clientService.getRelatedInTransactionClientsByClientId(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.bank.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,6 +15,7 @@ public class Account extends BaseEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
     private Client client;
 
     protected Account() {
@@ -26,6 +27,7 @@ public class Account extends BaseEntity {
         this.accountOpenDate = accountOpenDate;
         this.client = client;
     }
+
     @Column(name = "account_number", nullable = false)
     public Integer getAccountNumber() {
         return accountNumber;
@@ -61,5 +63,9 @@ public class Account extends BaseEntity {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public void setAccountOpenDate(Date accountOpenDate) {
+        this.accountOpenDate = accountOpenDate;
     }
 }

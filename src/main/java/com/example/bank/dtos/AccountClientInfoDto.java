@@ -1,7 +1,6 @@
 package com.example.bank.dtos;
 
 import jakarta.persistence.Tuple;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.math.BigDecimal;
 

@@ -1,11 +1,11 @@
 package com.example.bank.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "transactions")
@@ -15,6 +15,7 @@ public class Transaction extends BaseEntity {
     private String transactionType;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "transaction")
+    @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
     protected Transaction() {
@@ -53,5 +54,9 @@ public class Transaction extends BaseEntity {
                 ", transactionType='" + transactionType + '\'' +
                 ", id=" + id +
                 "} " + super.toString();
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -3,7 +3,6 @@ package com.example.bank.init;
 import com.example.bank.dtos.AccountDto;
 import com.example.bank.dtos.ClientDto;
 import com.example.bank.dtos.TransactionDto;
-import com.example.bank.models.Client;
 import com.example.bank.repositories.AccountRepository;
 import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.AccountService;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
@@ -72,7 +70,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         System.out.println(accountService.createAccount(account2, client2.getId()));
         System.out.println(accountService.createAccount(account3, client3.getId()));
 
-        System.out.println(accountService.getAccountInfoByClientInTransactionById(1));
+        System.out.println(clientService.getRelatedInTransactionClientsByClientId(1));
+
 
 //        accountService.removeAccountById(3);
 //        accountService.removeAccountByNumber(6666);

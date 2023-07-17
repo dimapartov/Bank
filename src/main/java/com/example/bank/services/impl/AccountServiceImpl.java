@@ -2,27 +2,24 @@ package com.example.bank.services.impl;
 
 import com.example.bank.dtos.AccountClientInfoDto;
 import com.example.bank.dtos.AccountDto;
-import com.example.bank.dtos.ClientDto;
 import com.example.bank.models.Account;
 import com.example.bank.models.Client;
 import com.example.bank.repositories.AccountRepository;
 import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.AccountService;
-import jakarta.persistence.Tuple;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Service
-public class AccountServiceImpl implements AccountService<Integer> {
+public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
@@ -33,10 +30,17 @@ public class AccountServiceImpl implements AccountService<Integer> {
     @Autowired
     private ModelMapper modelMapper;
 
+    private List<AccountDto> mapAccountsToDtos(List<Account> accounts) {
+        Type listType = new TypeToken<List<AccountDto>>() {}.getType();
+        return modelMapper.map(accounts, listType);
+    }
+
     @Override
     public AccountDto createAccount(AccountDto account, Integer id) {
         Client client = clientRepository.findClientById(id);
         Account account1 = modelMapper.map(account, Account.class);
+        Date currentTime = new Date();
+        account1.setAccountOpenDate(new Date(currentTime.getTime()));
         account1.setClient(client);
         return modelMapper.map(accountRepository.save(account1), AccountDto.class);
     }
@@ -45,11 +49,6 @@ public class AccountServiceImpl implements AccountService<Integer> {
     @Transactional
     public void removeAccountByNumber(Integer accountNumber) {
         accountRepository.deleteAccountByAccountNumber(accountNumber);
-    }
-
-    @Override
-    public void removeAccountById(Integer id) {
-        accountRepository.deleteById(id);
     }
 
     @Override
@@ -72,21 +71,25 @@ public class AccountServiceImpl implements AccountService<Integer> {
         return account.getBalance();
     }
 
+//    @Override
+//    public List<AccountDto> findAccountsByClientId(Integer id) {
+//        List<Account> accounts = accountRepository.findAccountsByClientId(id);
+//        return modelMapper.map(accounts, List.class);
+//    }
     @Override
     public List<AccountDto> findAccountsByClientId(Integer id) {
         List<Account> accounts = accountRepository.findAccountsByClientId(id);
-        return modelMapper.map(accounts, List.class);
+        return mapAccountsToDtos(accounts);
     }
 
     @Override
     public List<AccountDto> getAll() {
-        List<Account> allAccounts1 = accountRepository.findAll();
-        return modelMapper.map(allAccounts1, List.class);
+        List<Account> allAccounts = accountRepository.findAll();
+        return mapAccountsToDtos(allAccounts);
     }
 
     @Override
     public List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(Integer id) {
-        List<AccountClientInfoDto> list = accountRepository.getAccountInfoByClientInTransactionById(id);
-        return list;
+        return accountRepository.getAccountInfoByClientInTransactionById(id);
     }
 }

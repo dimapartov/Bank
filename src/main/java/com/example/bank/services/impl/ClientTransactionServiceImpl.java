@@ -9,9 +9,11 @@ import com.example.bank.repositories.ClientTransactionRepository;
 import com.example.bank.repositories.TransactionRepository;
 import com.example.bank.services.ClientTransactionService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +21,24 @@ import java.util.List;
 public class ClientTransactionServiceImpl implements ClientTransactionService {
     @Autowired
     private ClientRepository clientRepository;
+
     @Autowired
     private ClientTransactionRepository clientTransactionRepository;
+
     @Autowired
     private TransactionRepository transactionRepository;
+
     @Autowired
     private ModelMapper modelMapper;
+
+    private List<ClientTransactionDto> mapToDtos(List<ClientTransaction> clientTransactions) {
+        Type listType = new TypeToken<List<ClientTransactionDto>>() {}.getType();
+        return modelMapper.map(clientTransactions, listType);
+    }
+
     @Override
     public List<ClientTransactionDto> getAll() {
-        return modelMapper.map(clientTransactionRepository.findAll(), List.class);
+        return mapToDtos(clientTransactionRepository.findAll());
     }
 
     @Override
@@ -42,7 +53,6 @@ public class ClientTransactionServiceImpl implements ClientTransactionService {
         List<ClientTransaction> transactions = new ArrayList<>();
         transactions.add(clientTransaction1);
         transactions.add(clientTransaction2);
-        List<ClientTransactionDto> resultList = modelMapper.map(transactions, List.class);
-        return resultList;
+        return mapToDtos(transactions);
     }
 }

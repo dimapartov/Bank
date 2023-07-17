@@ -1,5 +1,6 @@
 package com.example.bank.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
@@ -15,10 +16,12 @@ public class Client extends BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JsonManagedReference
     private List<Account> accounts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
 
