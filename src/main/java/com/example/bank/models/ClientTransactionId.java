@@ -8,7 +8,9 @@ public class ClientTransactionId implements Serializable {
     private Client client;
     private Transaction transaction;
 
-    private ClientTransactionId() {}
+    private ClientTransactionId() {
+
+    }
 
     public ClientTransactionId(Client client, Transaction transaction) {
         this.client = client;

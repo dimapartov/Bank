@@ -1,7 +1,5 @@
 package com.example.bank.dtos;
 
-import jakarta.persistence.Tuple;
-
 import java.math.BigDecimal;
 
 public class AccountClientInfoDto {
@@ -20,12 +18,7 @@ public class AccountClientInfoDto {
 
     public AccountClientInfoDto() {
     }
-    public AccountClientInfoDto(Tuple tuple) {
-        this.accountNumber = tuple.get("accountNumber", Integer.class);
-        this.name = tuple.get("name", String.class);
-        this.surname = tuple.get("surname", String.class);
-        this.balance = tuple.get("balance", BigDecimal.class);
-    }
+
     @Override
     public String toString() {
         return "AccountClientInfoDto{" +

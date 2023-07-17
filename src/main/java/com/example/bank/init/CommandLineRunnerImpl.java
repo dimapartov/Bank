@@ -21,50 +21,49 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
     @Autowired
     private ClientService clientService;
+
     @Autowired
     private TransactionService transactionService;
 
     @Override
     public void run(String... args) throws Exception {
+
         seedData();
     }
 
     private void seedData() throws IOException {
 
-        ClientDto client1 = new ClientDto("Petrov", "Dima", "Denisovich", "8800");
+        ClientDto client1 =
+                new ClientDto("Kubarev", "Dmitriy", "Denisovich", "88005553535");
         client1 = clientService.addClient(client1);
-        ClientDto client2 = new ClientDto("Antonov", "Dima", "Evgenievich", "88090909");
+
+        ClientDto client2 =
+                new ClientDto("Loginov", "Evgeniy", "Romanovich", "88006665656");
         client2 = clientService.addClient(client2);
-        ClientDto client3 = new ClientDto("Alabay", "Zhenya", "Bankovich", "88005554454");
+
+        ClientDto client3 =
+                new ClientDto("Alabay", "Thomas", "Bankovich", "88006789898");
         client3 = clientService.addClient(client3);
 
-        System.out.println(clientService.findClientById(2));
-        System.out.println(clientService.getAll());
-        System.out.println(clientService.updatePhoneNumberById(2, "892929292929"));
-        TransactionDto transactionDto = new TransactionDto(new BigDecimal(50), "Перевод");
-        transactionDto = transactionService.createTransaction(1,2,transactionDto);
-        System.out.println(transactionService.getAllTransactionsByClientId(2));
 
-        TransactionDto transactionDto2 = new TransactionDto(new BigDecimal(5000), "Перевод");
-        transactionDto2 = transactionService.createTransaction(1,3,transactionDto2);
+        TransactionDto transaction1 = new TransactionDto(new BigDecimal(50), "Перевод");
+        transaction1 = transactionService.createTransaction(1,2, transaction1);
 
-        TransactionDto transactionDto3 = new TransactionDto(new BigDecimal(403030), "Перевод");
-        transactionDto3 = transactionService.createTransaction(2,3,transactionDto3);
+        TransactionDto transaction2 = new TransactionDto(new BigDecimal(5000), "Перевод");
+        transaction2 = transactionService.createTransaction(1,3,transaction2);
 
-        TransactionDto transactionDto4 = new TransactionDto(new BigDecimal(222323), "Перевод");
-        transactionDto4 = transactionService.createTransaction(1,2,transactionDto4);
+        TransactionDto transaction3 = new TransactionDto(new BigDecimal(20100), "Перевод");
+        transaction3 = transactionService.createTransaction(1,3,transaction3);
 
-        System.out.println(clientService.getRelatedInTransactionClientsByClientId(2));
+        TransactionDto transaction4 = new TransactionDto(new BigDecimal(50000), "Перевод");
+        transaction4 = transactionService.createTransaction(1,2,transaction4);
 
-        AccountDto account = new AccountDto(5555, 100);
-        AccountDto account2 = new AccountDto(6666, 100);
-        AccountDto account3 = new AccountDto(7777, 100);
+        AccountDto account1 = new AccountDto(123, 100000);
+        AccountDto account2 = new AccountDto(456, 100000);
+        AccountDto account3 = new AccountDto(789, 100000);
 
-        System.out.println(accountService.createAccount(account, client1.getId()));
-        System.out.println(accountService.createAccount(account2, client2.getId()));
-        System.out.println(accountService.createAccount(account3, client3.getId()));
-
-        System.out.println(clientService.getRelatedInTransactionClientsByClientId(1));
-
+        account1 = accountService.createAccount(account1, client1.getId());
+        account2 = accountService.createAccount(account2, client2.getId());
+        account3 = accountService.createAccount(account3, client3.getId());
     }
 }

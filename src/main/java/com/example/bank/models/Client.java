@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "clients")
 public class Client extends BaseEntity {
+
     private String surname;
     private String name;
     private String patronymic;

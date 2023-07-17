@@ -11,11 +11,6 @@ public class AccountDto {
     private Date accountOpenDate;
     private ClientDto client;
 
-//    public AccountDto(Integer accountNumber, Integer balance, String accountOpenDate) {
-//        this.accountNumber = accountNumber;
-//        this.balance = new BigDecimal(balance);
-//        this.accountOpenDate = Date.from(Instant.parse(accountOpenDate));
-//    }
     public AccountDto(Integer accountNumber, Integer balance) {
         this.accountNumber = accountNumber;
         this.balance = new BigDecimal(balance);

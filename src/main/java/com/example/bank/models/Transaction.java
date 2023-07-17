@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "transactions")
 public class Transaction extends BaseEntity {
+
     private BigDecimal transactionAmount;
     private Date date;
     private String transactionType;
