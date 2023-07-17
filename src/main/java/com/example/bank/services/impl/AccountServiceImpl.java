@@ -71,11 +71,6 @@ public class AccountServiceImpl implements AccountService {
         return account.getBalance();
     }
 
-//    @Override
-//    public List<AccountDto> findAccountsByClientId(Integer id) {
-//        List<Account> accounts = accountRepository.findAccountsByClientId(id);
-//        return modelMapper.map(accounts, List.class);
-//    }
     @Override
     public List<AccountDto> findAccountsByClientId(Integer id) {
         List<Account> accounts = accountRepository.findAccountsByClientId(id);

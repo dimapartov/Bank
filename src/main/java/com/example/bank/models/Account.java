@@ -9,6 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "accounts")
 public class Account extends BaseEntity {
+
     private Integer accountNumber;
     private BigDecimal balance;
     private Date accountOpenDate;

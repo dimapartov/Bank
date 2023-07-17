@@ -13,7 +13,9 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     void deleteAccountByAccountNumber(Integer accountNumber);
+
     Account findAccountByAccountNumber(Integer accountNumber);
+
     List<Account> findAccountsByClientId(Integer id);
 
     @Query(value =

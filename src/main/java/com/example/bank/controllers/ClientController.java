@@ -29,7 +29,7 @@ public class ClientController {
     @DeleteMapping("/client/delete/{id}")
     String delete(@PathVariable Integer id){
         clientService.removeClientById(id);
-        return "Client succesfully removed";
+        return "Client successfully removed";
     }
 
     @PutMapping("/client/phonenumber-update/{id}")

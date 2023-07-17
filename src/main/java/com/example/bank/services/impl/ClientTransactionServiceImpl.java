@@ -19,6 +19,7 @@ import java.util.List;
 
 @Service
 public class ClientTransactionServiceImpl implements ClientTransactionService {
+
     @Autowired
     private ClientRepository clientRepository;
 
