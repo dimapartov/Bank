@@ -20,21 +20,16 @@ import java.util.List;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-
     @Autowired
     private AccountRepository accountRepository;
-
     @Autowired
     private ClientRepository clientRepository;
-
     @Autowired
     private ModelMapper modelMapper;
-
     private List<AccountDto> mapAccountsToDtos(List<Account> accounts) {
         Type listType = new TypeToken<List<AccountDto>>() {}.getType();
         return modelMapper.map(accounts, listType);
     }
-
     @Override
     public AccountDto createAccount(AccountDto account, Integer id) {
         Client client = clientRepository.findClientById(id);
@@ -44,13 +39,11 @@ public class AccountServiceImpl implements AccountService {
         account1.setClient(client);
         return modelMapper.map(accountRepository.save(account1), AccountDto.class);
     }
-
     @Override
     @Transactional
     public void removeAccountByNumber(Integer accountNumber) {
         accountRepository.deleteAccountByAccountNumber(accountNumber);
     }
-
     @Override
     public AccountDto depositMoneyToAccountByNumber(Integer accountNumber, BigDecimal amountOfMoney) {
         Account account1 = accountRepository.findAccountByAccountNumber(accountNumber);
@@ -58,31 +51,26 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.save(account1);
         return modelMapper.map(account1, AccountDto.class);
     }
-
     @Override
     public Date checkAccountOpenDateByNumber(Integer accountNumber) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         return account.getAccountOpenDate();
     }
-
     @Override
     public BigDecimal checkBalanceOnAccountByNumber(Integer accountNumber) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         return account.getBalance();
     }
-
     @Override
     public List<AccountDto> findAccountsByClientId(Integer id) {
         List<Account> accounts = accountRepository.findAccountsByClientId(id);
         return mapAccountsToDtos(accounts);
     }
-
     @Override
     public List<AccountDto> getAll() {
         List<Account> allAccounts = accountRepository.findAll();
         return mapAccountsToDtos(allAccounts);
     }
-
     @Override
     public List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(Integer id) {
         return accountRepository.getAccountInfoByClientInTransactionById(id);
