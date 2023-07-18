@@ -35,14 +35,4 @@ public class ClientTransaction {
     public Transaction getTransaction() {
         return transaction;
     }
-
-//    @Column(name = "client_id", nullable = false)
-//    public Client getClients() {
-//        return client;
-//    }
-//
-//    @Column(name = "transaction_id", nullable = false)
-//    public Transaction getTransactions() {
-//        return transaction;
-//    }
 }

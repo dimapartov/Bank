@@ -10,9 +10,16 @@ import java.util.List;
 @Table(name = "clients")
 public class Client extends BaseEntity {
 
+    @Column(name = "surname", nullable = false)
     private String surname;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "patronymic", nullable = false)
     private String patronymic;
+
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
@@ -25,7 +32,6 @@ public class Client extends BaseEntity {
     @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
-
     protected Client() {
     }
 
@@ -36,22 +42,18 @@ public class Client extends BaseEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    @Column(name = "surname", nullable = false)
     public String getSurname() {
         return surname;
     }
 
-    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
 
-    @Column(name = "patronymic", nullable = false)
     public String getPatronymic() {
         return patronymic;
     }
 
-    @Column(name = "phone_number", nullable = false)
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -11,8 +11,13 @@ import java.util.List;
 @Table(name = "transactions")
 public class Transaction extends BaseEntity {
 
+    @Column(name = "transactionAmount", nullable = false)
     private BigDecimal transactionAmount;
+
+    @Column(name = "date", nullable = false)
     private Date date;
+
+    @Column(name = "transactionType", nullable = false)
     private String transactionType;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "transaction")
@@ -28,17 +33,14 @@ public class Transaction extends BaseEntity {
         this.transactionType = transactionType;
     }
 
-    @Column(name = "transactionAmount", nullable = false)
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
     }
 
-    @Column(name = "date", nullable = false)
     public Date getDate() {
         return date;
     }
 
-    @Column(name = "transactionType", nullable = false)
     public String getTransactionType() {
         return transactionType;
     }

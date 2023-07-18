@@ -10,8 +10,13 @@ import java.util.Date;
 @Table(name = "accounts")
 public class Account extends BaseEntity {
 
+    @Column(name = "account_number", nullable = false)
     private Integer accountNumber;
+
+    @Column(name = "balance", nullable = false)
     private BigDecimal balance;
+
+    @Column(name = "accountOpenDate", nullable = false)
     private Date accountOpenDate;
 
     @ManyToOne(optional = false)
@@ -29,17 +34,14 @@ public class Account extends BaseEntity {
         this.client = client;
     }
 
-    @Column(name = "account_number", nullable = false)
     public Integer getAccountNumber() {
         return accountNumber;
     }
 
-    @Column(name = "balance", nullable = false)
     public BigDecimal getBalance() {
         return balance;
     }
 
-    @Column(name = "accountOpenDate", nullable = false)
     public Date getAccountOpenDate() {
         return accountOpenDate;
     }
