@@ -20,8 +20,7 @@ public class ClientTransaction {
     @JsonBackReference
     private Transaction transaction;
 
-    protected ClientTransaction() {
-    }
+    protected ClientTransaction() {}
 
     public ClientTransaction(Client client, Transaction transaction) {
         this.client = client;

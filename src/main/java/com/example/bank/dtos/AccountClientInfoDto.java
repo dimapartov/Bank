@@ -16,8 +16,7 @@ public class AccountClientInfoDto {
         this.balance = balance;
     }
 
-    public AccountClientInfoDto() {
-    }
+    public AccountClientInfoDto() {}
 
     @Override
     public String toString() {

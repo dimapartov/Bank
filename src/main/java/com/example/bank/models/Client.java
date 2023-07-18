@@ -32,8 +32,7 @@ public class Client extends BaseEntity {
     @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
-    protected Client() {
-    }
+    protected Client() {}
 
     public Client(String surname, String name, String patronymic, String phoneNumber) {
         this.surname = surname;

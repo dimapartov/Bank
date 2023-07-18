@@ -10,8 +10,7 @@ public class TransactionDto {
     private Date date;
     private String transactionType;
 
-    public TransactionDto() {
-    }
+    public TransactionDto() {}
 
     public TransactionDto(BigDecimal transactionAmount, String transactionType) {
         this.transactionAmount = transactionAmount;

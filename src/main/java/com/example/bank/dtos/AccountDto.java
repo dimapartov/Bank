@@ -25,8 +25,7 @@ public class AccountDto {
         this.accountOpenDate = accountOpenDate;
     }
 
-    public AccountDto() {
-    }
+    public AccountDto() {}
 
     public Integer getAccountNumber() {
         return accountNumber;
