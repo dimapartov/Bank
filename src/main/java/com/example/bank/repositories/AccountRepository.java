@@ -25,5 +25,4 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
             "join c.clientTransactions ct " +
             "where ct.transaction.id=:id")
     List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(@Param(value = "id") Integer id);
-
 }

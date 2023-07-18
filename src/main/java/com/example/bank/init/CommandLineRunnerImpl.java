@@ -41,7 +41,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         client2 = clientService.addClient(client2);
 
         ClientDto client3 =
-                new ClientDto("Alabay", "Thomas", "Bankovich", "88006789898");
+                new ClientDto("Partov", "Den", "Pavlovich", "88006789898");
         client3 = clientService.addClient(client3);
 
 
