@@ -15,17 +15,17 @@ public class TransactionDto {
 
     public TransactionDto(BigDecimal transactionAmount, String transactionType) {
         this.transactionAmount = transactionAmount;
-        Date currentDate = new Date();
-        this.date = new Date(currentDate.getTime());
+//        Date currentDate = new Date();
+//        this.date = new Date(currentDate.getTime());
         this.transactionType = transactionType;
     }
 
-    public TransactionDto(Integer id, BigDecimal transactionAmount, Date date, String transactionType) {
-        this.id = id;
-        this.transactionAmount = transactionAmount;
-        this.date = date;
-        this.transactionType = transactionType;
-    }
+//    public TransactionDto(Integer id, BigDecimal transactionAmount, Date date, String transactionType) {
+//        this.id = id;
+//        this.transactionAmount = transactionAmount;
+//        this.date = date;
+//        this.transactionType = transactionType;
+//    }
 
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
