@@ -13,5 +13,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 
     @Query(value = "SELECT t FROM Client c JOIN c.clientTransactions ct JOIN ct.transaction t WHERE c.id = :id")
     List<Transaction> getAllTransactionsByClientId(@Param(value = "id") Integer id);
+
     Transaction getTransactionById(Integer id);
 }

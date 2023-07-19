@@ -24,8 +24,7 @@ public class Account extends BaseEntity {
     @JsonBackReference
     private Client client;
 
-    protected Account() {
-    }
+    protected Account() {}
 
     public Account(Integer accountNumber, BigDecimal balance, Date accountOpenDate, Client client) {
         this.accountNumber = accountNumber;

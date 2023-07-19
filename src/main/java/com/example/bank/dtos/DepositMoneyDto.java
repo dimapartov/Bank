@@ -12,8 +12,7 @@ public class DepositMoneyDto {
         this.money = new BigDecimal(money);
     }
 
-    public DepositMoneyDto() {
-    }
+    public DepositMoneyDto() {}
 
     public Integer getNumber() {
         return number;

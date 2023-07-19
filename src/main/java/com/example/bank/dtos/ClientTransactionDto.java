@@ -6,8 +6,7 @@ public class ClientTransactionDto {
     private TransactionDto transaction;
 
 
-    public ClientTransactionDto() {
-    }
+    public ClientTransactionDto() {}
 
     public ClientTransactionDto(ClientDto client, TransactionDto transaction) {
         this.client = client;

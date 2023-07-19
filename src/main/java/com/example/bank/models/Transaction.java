@@ -24,8 +24,7 @@ public class Transaction extends BaseEntity {
     @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
-    protected Transaction() {
-    }
+    protected Transaction() {}
 
     public Transaction(BigDecimal transactionAmount, Date date, String transactionType) {
         this.transactionAmount = transactionAmount;

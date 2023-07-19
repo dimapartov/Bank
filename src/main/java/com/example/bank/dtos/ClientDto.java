@@ -8,8 +8,7 @@ public class ClientDto {
     private String patronymic;
     private String phoneNumber;
 
-    public ClientDto() {
-    }
+    public ClientDto() {}
 
     public ClientDto(String surname, String name, String patronymic, String phoneNumber) {
         this.surname = surname;
