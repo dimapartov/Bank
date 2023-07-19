@@ -8,15 +8,14 @@ import com.example.bank.repositories.AccountRepository;
 import com.example.bank.repositories.ClientRepository;
 import com.example.bank.services.AccountService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -26,10 +25,7 @@ public class AccountServiceImpl implements AccountService {
     private ClientRepository clientRepository;
     @Autowired
     private ModelMapper modelMapper;
-    private List<AccountDto> mapAccountsToDtos(List<Account> accounts) {
-        Type listType = new TypeToken<List<AccountDto>>() {}.getType();
-        return modelMapper.map(accounts, listType);
-    }
+
     @Override
     public AccountDto createAccount(AccountDto account, Integer id) {
         Client client = clientRepository.findClientById(id);
@@ -63,13 +59,13 @@ public class AccountServiceImpl implements AccountService {
     }
     @Override
     public List<AccountDto> findAccountsByClientId(Integer id) {
-        List<Account> accounts = accountRepository.findAccountsByClientId(id);
-        return mapAccountsToDtos(accounts);
+        return accountRepository.findAccountsByClientId(id)
+                .stream().map((account) -> modelMapper.map(account, AccountDto.class)).collect(Collectors.toList());
     }
     @Override
     public List<AccountDto> getAll() {
-        List<Account> allAccounts = accountRepository.findAll();
-        return mapAccountsToDtos(allAccounts);
+        return accountRepository.findAll()
+                .stream().map((account) -> modelMapper.map(account, AccountDto.class)).collect(Collectors.toList());
     }
     @Override
     public List<AccountClientInfoDto> getAccountInfoByClientInTransactionById(Integer id) {

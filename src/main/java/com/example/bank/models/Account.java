@@ -1,6 +1,5 @@
 package com.example.bank.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -21,7 +20,6 @@ public class Account extends BaseEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
     private Client client;
 
     protected Account() {}

@@ -6,13 +6,12 @@ import com.example.bank.repositories.TransactionRepository;
 import com.example.bank.services.ClientTransactionService;
 import com.example.bank.services.TransactionService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -26,11 +25,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private ClientTransactionService clientTransactionService;
 
-    public List<TransactionDto> mapTransactionsToDtos(List<Transaction> transactions) {
-        Type listType = new TypeToken<List<TransactionDto>>() {}.getType();
-        return modelMapper.map(transactions, listType);
-    }
-
     @Override
     public TransactionDto createTransaction(Integer senderId, Integer receiverId, TransactionDto transaction) {
         Transaction transaction1 = modelMapper.map(transaction, Transaction.class);
@@ -43,13 +37,16 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<TransactionDto> getAll() {
-        return mapTransactionsToDtos(transactionRepository.findAll());
+        return transactionRepository.findAll()
+                .stream().map((transaction) -> modelMapper.map(transaction, TransactionDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<TransactionDto> getAllTransactionsByClientId(Integer id) {
-        List<Transaction> transactions = transactionRepository.getAllTransactionsByClientId(id);
-        return mapTransactionsToDtos(transactions);
+        return transactionRepository.getAllTransactionsByClientId(id)
+                .stream().map((transaction) -> modelMapper.map(transaction, TransactionDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -17,15 +17,6 @@ public class ClientDto {
         this.phoneNumber = phoneNumber;
     }
 
-//    public ClientDto(Integer id, String surname, String name, String patronymic, String phoneNumber) {
-//        this.id = id;
-//        this.surname = surname;
-//        this.name = name;
-//        this.patronymic = patronymic;
-//        this.phoneNumber = phoneNumber;
-//    }
-
-
     public String getSurname() {
         return surname;
     }

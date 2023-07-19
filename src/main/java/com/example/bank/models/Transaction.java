@@ -1,6 +1,5 @@
 package com.example.bank.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -21,7 +20,6 @@ public class Transaction extends BaseEntity {
     private String transactionType;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "transaction")
-    @JsonManagedReference
     private List<ClientTransaction> clientTransactions;
 
     protected Transaction() {}
