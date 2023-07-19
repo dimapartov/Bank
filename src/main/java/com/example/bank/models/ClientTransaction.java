@@ -1,6 +1,5 @@
 package com.example.bank.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,13 +10,11 @@ public class ClientTransaction {
     @Id
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @JsonBackReference
     private Client client;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "transaction_id", referencedColumnName = "id")
-    @JsonBackReference
     private Transaction transaction;
 
     protected ClientTransaction() {}
